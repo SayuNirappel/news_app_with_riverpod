@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app_with_riverpod/presentation/home_screen/controller/home_screnn_controller.dart';
 import 'package:news_app_with_riverpod/presentation/home_screen/state/home_screen_state.dart';
+import 'package:news_app_with_riverpod/presentation/home_screen/view/search_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +32,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             "News 360",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
-          actions: [Text(screenState.articles?.length.toString() ?? "0")],
+          actions: [
+            InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()));
+              },
+              child: Icon(
+                Icons.search,
+                size: 30,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              width: 25,
+            )
+          ],
         ),
         body: screenState.isLoading! || screenState.articles == null
             ? Center(
@@ -49,23 +65,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
                     ),
-                    actions: [
-                      CircleAvatar(
-                        radius: 20,
-                        child: Image(
-                          image: NetworkImage(
-                              "https://images.pexels.com/photos/4386429/pexels-photo-4386429.jpeg?auto=compress&cs=tinysrgb&w=600"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.blueGrey,
-                      ),
-                      SizedBox(
-                        width: 40,
-                      )
-                    ],
                   ),
                   SliverList(
                       delegate: SliverChildBuilderDelegate(

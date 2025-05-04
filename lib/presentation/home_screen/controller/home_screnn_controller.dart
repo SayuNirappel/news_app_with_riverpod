@@ -16,7 +16,7 @@ class HomeScreenStateNotifier extends StateNotifier<HomescreenState> {
 
   Future<void> getHotNews({String? searchKey}) async {
     try {
-      if (AppConfig.searchStat == false || searchKey == null) {
+      if (AppConfig.searchStat == false || searchKey == "") {
         final resp = await ApiHomeScreenService().getCountryNews();
 
         if (resp != null) {

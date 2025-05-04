@@ -133,7 +133,7 @@ class _NewsDetailsScreenState extends ConsumerState<NewsDetailsScreen> {
                       width: 200,
                       height: 30,
                       decoration: BoxDecoration(
-                          border: Border.all(),
+                          border: Border.all(color: Colors.redAccent.shade700),
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.redAccent.shade700),
                       child: Text(
